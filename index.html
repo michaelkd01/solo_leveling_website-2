@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solo Leveling Character Rankings</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .profile-section {
+            display: none;
+            margin-top: 2rem;
+            padding: 2rem;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .profile-section.active {
+            display: block;
+        }
+        .profile-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        .profile-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        .profile-card {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        .profile-card h3 {
+            margin: 0 0 1rem 0;
+            color: #333;
+        }
+        .profile-info {
+            margin-bottom: 1rem;
+        }
+        .profile-info p {
+            margin: 0.5rem 0;
+            color: #666;
+        }
+        .profile-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .profile-btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background-color 0.3s;
+        }
+        .edit-btn {
+            background: #4CAF50;
+            color: white;
+        }
+        .delete-btn {
+            background: #f44336;
+            color: white;
+        }
+        .add-profile-btn {
+            background: #2196F3;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .add-profile-btn:hover {
+            background: #1976D2;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">Solo <span>Leveling</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#" class="nav-link active" data-section="rankings">Rankings</a></li>
+                    <li><a href="#" class="nav-link" data-section="profiles">Profiles</a></li>
+                    <li><a href="#" class="nav-link" data-section="quiz">Character Quiz</a></li>
+                    <li><a href="admin-login.html" style="background-color: #e94560; font-weight: bold;">Admin</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container main-content">
+        <!-- Rankings Section -->
+        <section id="rankings-section" class="active">
+            <div class="view-toggle">
+                <button class="toggle-btn active" id="simple-view-btn">Simple Ranking</button>
+                <button class="toggle-btn" id="detailed-view-btn">Detailed Ranking</button>
+            </div>
+
+            <div class="character-grid" id="character-grid">
+                <!-- Character cards will be dynamically inserted here -->
+            </div>
+
+            <section class="custom-ranking">
+                <h2>Create Your Own Rankings</h2>
+                <p>Drag and drop characters to create your own custom ranking of Solo Leveling's strongest characters.</p>
+                
+                <div class="drag-area" id="drag-area">
+                    <!-- Draggable character items will be dynamically inserted here -->
+                </div>
+                
+                <div class="custom-ranking-result" id="custom-ranking-result">
+                    <!-- Custom ranking results will be displayed here -->
+                </div>
+                
+                <button class="save-ranking" id="save-ranking">Save My Ranking</button>
+            </section>
+        </section>
+
+        <!-- Profiles Section -->
+        <section id="profiles-section" class="profile-section">
+            <div class="profile-header">
+                <h2>Player Profiles</h2>
+                <button class="add-profile-btn" id="add-profile-btn">Add New Profile</button>
+            </div>
+            <div class="profile-grid" id="profile-grid">
+                <!-- Profile cards will be dynamically inserted here -->
+            </div>
+        </section>
+
+        <!-- Quiz Section -->
+        <section id="quiz-section" class="profile-section">
+            <h2>Character Quiz</h2>
+            <p>Test your knowledge of Solo Leveling characters!</p>
+            <a href="quiz.html" class="add-profile-btn">Take the Quiz</a>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Solo Leveling Character Rankings | Images from <a href="https://solo-leveling.fandom.com/" target="_blank">Solo Leveling Wiki</a> and <a href="https://wallpapercave.com/" target="_blank">Wallpaper Cave</a></p>
+        </div>
+    </footer>
+
+    <script src="js/characters.js"></script>
+    <script src="js/image-handler.js"></script>
+    <script src="js/update-images.js"></script>
+    <script src="js/sync-storage.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/profile-manager.js"></script>
+</body>
+</html>

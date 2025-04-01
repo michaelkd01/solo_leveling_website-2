@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solo Leveling Character Quiz</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">Solo <span>Leveling</span></div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Rankings</a></li>
+                    <li><a href="quiz.html" class="active">Character Quiz</a></li>
+                    <li><a href="admin-login.html" style="background-color: #e94560; font-weight: bold;">Admin</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container main-content">
+        <section class="quiz-section">
+            <h2>Character Naming Quiz</h2>
+            <p>Test your knowledge of Solo Leveling characters! Can you identify them from their images?</p>
+            
+            <div class="quiz-container" id="quiz-container">
+                <img src="" alt="Character Image" class="quiz-image" id="quiz-image">
+                <div class="quiz-options" id="quiz-options">
+                    <!-- Quiz options will be dynamically inserted here -->
+                </div>
+                <button class="quiz-submit" id="quiz-submit">Submit Answer</button>
+                <div class="quiz-result" id="quiz-result"></div>
+                <button class="quiz-next" id="quiz-next" style="display: none;">Next Character</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Solo Leveling Character Quiz | Images from <a href="https://solo-leveling.fandom.com/" target="_blank">Solo Leveling Wiki</a> and <a href="https://wallpapercave.com/" target="_blank">Wallpaper Cave</a></p>
+        </div>
+    </footer>
+
+    <script src="js/characters.js"></script>
+    <script src="js/image-handler.js"></script>
+    <script src="js/update-images.js"></script>
+    <script src="js/sync-storage.js"></script>
+    <script src="js/quiz.js"></script>
+</body>
+</html>

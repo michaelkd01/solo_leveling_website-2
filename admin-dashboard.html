@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solo Leveling Admin Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .admin-dashboard {
+            background-color: var(--primary-light);
+            border-radius: 8px;
+            padding: 30px;
+            margin: 20px 0;
+            box-shadow: 0 4px 12px var(--shadow-color);
+        }
+        
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .admin-title h2 {
+            color: var(--accent-secondary);
+            margin-bottom: 10px;
+        }
+        
+        .admin-title p {
+            color: var(--text-secondary);
+        }
+        
+        .logout-btn {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .logout-btn:hover {
+            background-color: #d32f2f;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .admin-menu {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .admin-card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .admin-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px var(--shadow-color);
+            background-color: var(--card-hover);
+        }
+        
+        .admin-card-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: var(--accent-primary);
+        }
+        
+        .admin-card h3 {
+            color: var(--text-primary);
+            margin-bottom: 10px;
+        }
+        
+        .admin-card p {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+        
+        .admin-card-btn {
+            background-color: var(--accent-primary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .admin-card-btn:hover {
+            background-color: var(--accent-secondary);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">Solo <span>Leveling</span></div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Rankings</a></li>
+                    <li><a href="quiz.html">Character Quiz</a></li>
+                    <li><a href="admin-dashboard.html" class="active" style="background-color: #e94560; font-weight: bold;">Admin</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container main-content">
+        <div class="admin-dashboard">
+            <div class="admin-header">
+                <div class="admin-title">
+                    <h2>Admin Dashboard</h2>
+                    <p>Manage Solo Leveling character database</p>
+                </div>
+                <button id="logout-btn" class="logout-btn">Logout</button>
+            </div>
+            
+            <div class="admin-menu">
+                <div class="admin-card">
+                    <div class="admin-card-icon">🖼️</div>
+                    <h3>Image Manager</h3>
+                    <p>Upload and replace character images</p>
+                    <a href="admin.html" class="admin-card-btn">Manage Images</a>
+                </div>
+                
+                <div class="admin-card">
+                    <div class="admin-card-icon">➕</div>
+                    <h3>Add Character</h3>
+                    <p>Add new characters to the database</p>
+                    <a href="add-character.html" class="admin-card-btn">Add Character</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Solo Leveling Character Rankings | Images from <a href="https://solo-leveling.fandom.com/" target="_blank">Solo Leveling Wiki</a> and <a href="https://wallpapercave.com/" target="_blank">Wallpaper Cave</a></p>
+        </div>
+    </footer>
+
+    <script src="js/admin-dashboard.js"></script>
+</body>
+</html>
