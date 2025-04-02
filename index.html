@@ -117,16 +117,90 @@
         .main-content {
             transition: padding-top 0.3s ease;
         }
+        /* New styles for layout changes */
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+        .logo:hover {
+            opacity: 0.8;
+        }
+        .nav-center {
+            display: flex;
+            justify-content: center;
+            flex: 1;
+        }
+        .nav-center ul {
+            display: flex;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .nav-center .nav-link {
+            font-size: 1.2rem;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        .nav-center .nav-link:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+        .nav-center .nav-link.active {
+            background-color: #e94560;
+            color: white;
+        }
+        .profile-circle {
+            position: fixed;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 60px;
+            height: 60px;
+            background: #2196F3;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .profile-circle:hover {
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .profile-circle i {
+            color: white;
+            font-size: 24px;
+        }
+        .profile-circle.active {
+            background: #e94560;
+        }
+        @media (max-width: 768px) {
+            .profile-circle {
+                display: none;
+            }
+            .nav-center ul {
+                gap: 1rem;
+            }
+        }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <header>
         <div class="container header-content">
-            <div class="logo">Solo <span>Leveling</span></div>
-            <nav>
+            <a href="#" class="logo" onclick="showRankings()">Solo <span>Leveling</span></a>
+            <nav class="nav-center">
                 <ul>
                     <li><a href="#" class="nav-link active" data-section="rankings">Rankings</a></li>
-                    <li><a href="#" class="nav-link" data-section="profiles">Profiles</a></li>
                     <li><a href="#" class="nav-link" data-section="quiz">Character Quiz</a></li>
                 </ul>
             </nav>
@@ -161,6 +235,18 @@
             </section>
         </section>
 
+        <!-- Quiz Section -->
+        <section id="quiz-section" class="profile-section">
+            <h2>Character Quiz</h2>
+            <p>Test your knowledge of Solo Leveling characters!</p>
+            <a href="quiz.html" class="add-profile-btn">Take the Quiz</a>
+        </section>
+
+        <!-- Profile Circle -->
+        <div class="profile-circle" id="profile-circle" onclick="showProfiles()">
+            <i class="fas fa-user"></i>
+        </div>
+
         <!-- Profiles Section -->
         <section id="profiles-section" class="profile-section">
             <div class="profile-header">
@@ -170,13 +256,6 @@
             <div class="profile-grid" id="profile-grid">
                 <!-- Profile cards will be dynamically inserted here -->
             </div>
-        </section>
-
-        <!-- Quiz Section -->
-        <section id="quiz-section" class="profile-section">
-            <h2>Character Quiz</h2>
-            <p>Test your knowledge of Solo Leveling characters!</p>
-            <a href="quiz.html" class="add-profile-btn">Take the Quiz</a>
         </section>
 
         <!-- Admin Section -->
@@ -197,5 +276,14 @@
     <script src="js/sync-storage.js"></script>
     <script src="js/main.js"></script>
     <script src="js/profile-manager.js"></script>
+    <script>
+        function showRankings() {
+            document.querySelector('[data-section="rankings"]').click();
+            document.getElementById('simple-view-btn').click();
+        }
+        function showProfiles() {
+            document.querySelector('[data-section="profiles"]').click();
+        }
+    </script>
 </body>
 </html>

@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const navLinks = document.querySelectorAll('.nav-link');
     const sections = document.querySelectorAll('section');
     const mainContent = document.querySelector('.main-content');
+    const profileCircle = document.getElementById('profile-circle');
 
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
@@ -22,6 +23,13 @@ document.addEventListener('DOMContentLoaded', function() {
             const targetSectionElement = document.getElementById(`${targetSection}-section`);
             if (targetSectionElement) {
                 targetSectionElement.classList.add('active');
+            }
+
+            // Update profile circle state
+            if (targetSection === 'profiles') {
+                profileCircle.classList.add('active');
+            } else {
+                profileCircle.classList.remove('active');
             }
 
             // Adjust main content padding based on section
