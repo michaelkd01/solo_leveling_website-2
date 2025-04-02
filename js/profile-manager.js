@@ -8,8 +8,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
-            e.preventDefault();
+            // Only prevent default for section toggles, not direct links
             const targetSection = link.getAttribute('data-section');
+            if (!targetSection) {
+                return; // Allow direct links to work normally
+            }
+
+            e.preventDefault();
             
             // Update active states
             navLinks.forEach(l => l.classList.remove('active'));
