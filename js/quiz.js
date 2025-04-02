@@ -134,7 +134,8 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Add options to the DOM
         options.forEach(character => {
-            const optionElement = document.createElement('div');
+            const optionElement = document.createElement('button');
+            optionElement.type = 'button';
             optionElement.className = 'quiz-option';
             optionElement.dataset.id = character.id;
             optionElement.textContent = character.name;
