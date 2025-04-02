@@ -82,6 +82,26 @@
         .add-profile-btn:hover {
             background: #1976D2;
         }
+        .admin-section {
+            margin-top: 2rem;
+            padding: 1rem;
+            text-align: center;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        .admin-btn {
+            display: inline-block;
+            background-color: #e94560;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        .admin-btn:hover {
+            background-color: #d13a52;
+        }
     </style>
 </head>
 <body>
@@ -93,7 +113,6 @@
                     <li><a href="#" class="nav-link active" data-section="rankings">Rankings</a></li>
                     <li><a href="#" class="nav-link" data-section="profiles">Profiles</a></li>
                     <li><a href="#" class="nav-link" data-section="quiz">Character Quiz</a></li>
-                    <li><a href="admin-login.html" style="background-color: #e94560; font-weight: bold;">Admin</a></li>
                 </ul>
             </nav>
         </div>
@@ -143,6 +162,11 @@
             <h2>Character Quiz</h2>
             <p>Test your knowledge of Solo Leveling characters!</p>
             <a href="quiz.html" class="add-profile-btn">Take the Quiz</a>
+        </section>
+
+        <!-- Admin Section -->
+        <section class="admin-section">
+            <a href="admin-login.html" class="admin-btn">Admin Panel</a>
         </section>
     </main>
 
