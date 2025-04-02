@@ -248,9 +248,10 @@ document.addEventListener('DOMContentLoaded', function() {
         const newScore = {
             name: playerName,
             score: score,
-            date: new Date().toISOString()
+            date: new Date().toLocaleDateString()
         };
 
+        // Add to scores array
         scores.push(newScore);
 
         // Sort scores by score (descending) and date (ascending)
@@ -259,27 +260,21 @@ document.addEventListener('DOMContentLoaded', function() {
         // Keep only top 10 scores
         const topScores = scores.slice(0, 10);
 
-        // Save to localStorage
+        // Save back to localStorage
         localStorage.setItem('quizScores', JSON.stringify(topScores));
 
-        // Save personal best for this player
-        const personalBests = JSON.parse(localStorage.getItem('personalBests') || '{}');
-        if (!personalBests[playerName] || score > personalBests[playerName]) {
-            personalBests[playerName] = score;
-            localStorage.setItem('personalBests', JSON.stringify(personalBests));
-        }
-
-        // Update the leaderboard
-        updateLeaderboard();
+        // Update personal best
         showPersonalBest(playerName);
 
-        // Close the modal
+        // Update leaderboard
+        updateLeaderboard();
+
+        // Hide modal
         modalOverlay.style.display = 'none';
         nameModal.style.display = 'none';
-        playerNameInput.value = '';
 
-        // Switch to leaderboard view
-        navButtons[1].click();
+        // Reset the quiz
+        initializeQuiz();
     }
 
     // Function to update the leaderboard
@@ -292,8 +287,8 @@ document.addEventListener('DOMContentLoaded', function() {
             row.innerHTML = `
                 <td>${index + 1}</td>
                 <td>${score.name}</td>
-                <td>${score.score}/10</td>
-                <td>${new Date(score.date).toLocaleDateString()}</td>
+                <td>${score.score}</td>
+                <td>${score.date}</td>
             `;
             leaderboardBody.appendChild(row);
         });
@@ -301,22 +296,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Function to show personal best
     function showPersonalBest(playerName) {
-        const personalBests = JSON.parse(localStorage.getItem('personalBests') || '{}');
-        if (playerName && personalBests[playerName]) {
-            personalBest.style.display = 'block';
-            personalBest.textContent = `Your Personal Best: ${personalBests[playerName]}/10`;
-        } else {
-            personalBest.style.display = 'none';
+        const scores = JSON.parse(localStorage.getItem('quizScores') || '[]');
+        if (scores.length > 0) {
+            const bestScore = scores.find(score => score.name === playerName);
+            if (bestScore) {
+                personalBest.textContent = `Personal Best: ${bestScore.score}/10`;
+                personalBest.style.display = 'block';
+            }
         }
     }
 
-    // Helper function to shuffle an array
+    // Function to shuffle array
     function shuffleArray(array) {
-        const newArray = [...array];
-        for (let i = newArray.length - 1; i > 0; i--) {
+        for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
-            [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+            [array[i], array[j]] = [array[j], array[i]];
         }
-        return newArray;
+        return array;
     }
 });
