@@ -11,11 +11,12 @@
     <style>
         :root {
             --primary-color: #8B0000;  /* Deep red from Igris's armor */
-            --secondary-color: #DAA520;  /* Gold accents from armor details */
+            --secondary-color: #A52A2A;  /* Lighter red for accents */
             --background-color: #1a1a1a;  /* Dark background */
             --text-color: #ffffff;
             --card-bg: #2a2a2a;
-            --hover-color: #A52A2A;  /* Lighter red for hover states */
+            --hover-color: #D22B2B;  /* Bright red for hover states */
+            --accent-color: #8B0000;  /* Deep red for borders and highlights */
         }
 
         body {
@@ -77,7 +78,7 @@
             transition: all 0.3s;
             color: var(--text-color);
             text-decoration: none;
-            border: 1px solid var(--secondary-color);
+            border: 1px solid var(--accent-color);
         }
 
         .nav-center .nav-link:hover {
@@ -138,7 +139,7 @@
             padding: 2rem;
             text-align: center;
             transition: transform 0.3s ease;
-            border: 1px solid var(--secondary-color);
+            border: 1px solid var(--accent-color);
         }
 
         .ranking-card:hover {
@@ -162,7 +163,7 @@
             border-radius: 5px;
             text-decoration: none;
             transition: background-color 0.3s ease;
-            border: 1px solid var(--secondary-color);
+            border: 1px solid var(--accent-color);
             display: inline-block;
         }
 
@@ -183,7 +184,7 @@
             text-decoration: none;
             border-radius: 5px;
             transition: background-color 0.3s ease;
-            border: 2px solid var(--secondary-color);
+            border: 2px solid var(--accent-color);
         }
 
         .admin-btn:hover {
@@ -383,15 +384,16 @@
             transition: all 0.3s;
             color: white;
             text-decoration: none;
+            border: 1px solid var(--accent-color);
         }
         .nav-center .nav-link:hover {
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: var(--hover-color);
             transform: translateY(-2px);
         }
         .nav-center .nav-link.active {
-            background-color: #e94560;
+            background-color: var(--primary-color);
             color: white;
-            box-shadow: 0 2px 4px rgba(233, 69, 96, 0.2);
+            box-shadow: 0 2px 4px rgba(139, 0, 0, 0.2);
         }
         .profile-circle {
             position: fixed;
@@ -400,7 +402,7 @@
             transform: none;
             width: 40px;
             height: 40px;
-            background: #2196F3;
+            background: var(--primary-color);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -409,6 +411,7 @@
             transition: all 0.3s;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             z-index: 1000;
+            border: 1px solid var(--accent-color);
         }
         .profile-circle:hover {
             transform: scale(1.1);
@@ -419,7 +422,118 @@
             font-size: 18px;
         }
         .profile-circle.active {
-            background: #e94560;
+            background: var(--hover-color);
+        }
+        .view-toggle {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .toggle-btn {
+            padding: 0.5rem 1.5rem;
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            border: 1px solid var(--accent-color);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .toggle-btn:hover {
+            background-color: var(--hover-color);
+        }
+        .toggle-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        .character-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        .character-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            border: 1px solid var(--accent-color);
+        }
+        .character-card:hover {
+            transform: translateY(-5px);
+        }
+        .character-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+        .character-info {
+            padding: 1.5rem;
+        }
+        .character-name {
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+        .character-rank {
+            color: #cccccc;
+            margin-bottom: 1rem;
+        }
+        .character-description {
+            color: #cccccc;
+            margin-bottom: 1rem;
+        }
+        .custom-ranking {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 10px;
+            margin-top: 3rem;
+            border: 1px solid var(--accent-color);
+        }
+        .custom-ranking h2 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+        .custom-ranking p {
+            color: #cccccc;
+            margin-bottom: 2rem;
+        }
+        .drag-area {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .draggable-item {
+            background-color: var(--background-color);
+            padding: 1rem;
+            border-radius: 5px;
+            cursor: move;
+            text-align: center;
+            border: 1px solid var(--accent-color);
+        }
+        .draggable-item img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 0.5rem;
+        }
+        .draggable-item p {
+            color: var(--text-color);
+            margin: 0;
+        }
+        .save-ranking {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 1px solid var(--accent-color);
+        }
+        .save-ranking:hover {
+            background-color: var(--hover-color);
         }
         @media (max-width: 768px) {
             .profile-circle {

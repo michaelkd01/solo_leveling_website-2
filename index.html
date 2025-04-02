@@ -11,11 +11,12 @@
     <style>
         :root {
             --primary-color: #8B0000;  /* Deep red from Igris's armor */
-            --secondary-color: #DAA520;  /* Gold accents from armor details */
+            --secondary-color: #A52A2A;  /* Lighter red for accents */
             --background-color: #1a1a1a;  /* Dark background */
             --text-color: #ffffff;
             --card-bg: #2a2a2a;
-            --hover-color: #A52A2A;  /* Lighter red for hover states */
+            --hover-color: #D22B2B;  /* Bright red for hover states */
+            --accent-color: #8B0000;  /* Deep red for borders and highlights */
         }
 
         body {
@@ -32,78 +33,82 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.3);
         }
 
-        .logo-container {
-            width: 200px;
+        .nav-bar {
+            background-color: #000000;
+            padding: 1rem 0;
+            margin-top: 1rem;
+        }
+
+        .nav-center {
+            display: flex;
+            justify-content: center;
+            max-width: 600px;
             margin: 0 auto;
-            text-align: center;
         }
 
-        .logo-container img {
-            max-width: 100%;
-            height: auto;
-            transition: transform 0.3s ease;
+        .nav-center ul {
+            display: flex;
+            gap: 3rem;
+            margin: 0;
+            padding: 0;
+            list-style: none;
         }
 
-        .logo-container img:hover {
-            transform: scale(1.05);
+        .nav-center .nav-link {
+            font-size: 1.2rem;
+            font-weight: 500;
+            padding: 0.5rem 1.5rem;
+            border-radius: 4px;
+            transition: all 0.3s;
+            color: var(--text-color);
+            text-decoration: none;
+            border: 1px solid var(--accent-color);
         }
 
-        .hero {
+        .nav-center .nav-link:hover {
+            background-color: var(--hover-color);
+            transform: translateY(-2px);
+        }
+
+        .nav-center .nav-link.active {
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            box-shadow: 0 2px 4px rgba(139, 0, 0, 0.2);
+        }
+
+        .hero-section {
             background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/sl-background.jpg');
             background-size: cover;
             background-position: center;
-            height: 60vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            padding: 4rem 0;
             text-align: center;
-            color: white;
-            position: relative;
+            margin-bottom: 3rem;
         }
 
         .hero-content {
             max-width: 800px;
-            padding: 2rem;
-            background: rgba(0, 0, 0, 0.8);
-            border-radius: 10px;
-            border: 2px solid var(--secondary-color);
+            margin: 0 auto;
+            padding: 0 1rem;
         }
 
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
+        .hero-title {
+            font-size: 3rem;
             color: var(--secondary-color);
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
-        .hero p {
+        .hero-subtitle {
             font-size: 1.2rem;
+            color: var(--text-color);
             margin-bottom: 2rem;
-            color: #ffffff;
         }
 
-        .cta-button {
-            display: inline-block;
-            padding: 1rem 2rem;
-            background-color: var(--primary-color);
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-            border: 2px solid var(--secondary-color);
-        }
-
-        .cta-button:hover {
-            background-color: var(--hover-color);
-        }
-
-        .features {
-            padding: 4rem 2rem;
+        .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
+            margin-bottom: 3rem;
         }
 
         .feature-card {
@@ -112,41 +117,27 @@
             border-radius: 10px;
             text-align: center;
             transition: transform 0.3s ease;
-            border: 1px solid var(--secondary-color);
+            border: 1px solid var(--accent-color);
         }
 
         .feature-card:hover {
             transform: translateY(-5px);
         }
 
-        .feature-card i {
+        .feature-icon {
             font-size: 2.5rem;
             color: var(--secondary-color);
             margin-bottom: 1rem;
         }
 
-        .feature-card h3 {
+        .feature-title {
             color: var(--secondary-color);
             margin-bottom: 1rem;
         }
 
-        .feature-card p {
+        .feature-description {
             color: #cccccc;
             margin-bottom: 1.5rem;
-        }
-
-        .feature-card .cta-button {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 0.8rem 1.5rem;
-            border-radius: 5px;
-            text-decoration: none;
-            transition: background-color 0.3s ease;
-            border: 1px solid var(--secondary-color);
-        }
-
-        .feature-card .cta-button:hover {
-            background-color: var(--hover-color);
         }
 
         .series-section {
@@ -155,14 +146,14 @@
             margin: 0 auto;
         }
 
-        .series-section h2 {
+        .series-title {
             color: var(--secondary-color);
             text-align: center;
             margin-bottom: 2rem;
             font-size: 2.5rem;
         }
 
-        .book-grid {
+        .books-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
@@ -173,7 +164,7 @@
             border-radius: 10px;
             overflow: hidden;
             transition: transform 0.3s ease;
-            border: 1px solid var(--secondary-color);
+            border: 1px solid var(--accent-color);
         }
 
         .book-card:hover {
@@ -190,29 +181,19 @@
             padding: 1.5rem;
         }
 
-        .book-info h3 {
+        .book-title {
             color: var(--secondary-color);
             margin-bottom: 0.5rem;
         }
 
-        .book-info p {
+        .book-details {
             color: #cccccc;
             margin-bottom: 1rem;
         }
 
-        .book-info .cta-button {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 0.8rem 1.5rem;
-            border-radius: 5px;
-            text-decoration: none;
-            transition: background-color 0.3s ease;
-            border: 1px solid var(--secondary-color);
-            display: inline-block;
-        }
-
-        .book-info .cta-button:hover {
-            background-color: var(--hover-color);
+        .book-description {
+            color: #cccccc;
+            margin-bottom: 1rem;
         }
 
         .admin-section {
@@ -228,7 +209,7 @@
             text-decoration: none;
             border-radius: 5px;
             transition: background-color 0.3s ease;
-            border: 2px solid var(--secondary-color);
+            border: 2px solid var(--accent-color);
         }
 
         .admin-btn:hover {
