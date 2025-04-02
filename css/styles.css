@@ -1,17 +1,17 @@
-/* Solo Leveling Character Ranking Website - Igris-inspired color palette */
+/* Solo Leveling Character Ranking Website - Dark Theme */
 
 :root {
-  /* Igris-inspired color palette */
-  --primary-dark: #1a1a2e; /* Dark purple/black background */
-  --primary-light: #16213e; /* Slightly lighter purple for sections */
-  --accent-primary: #7209b7; /* Purple accent */
-  --accent-secondary: #f72585; /* Red/pink accent */
-  --text-primary: #e6e6e6; /* Light text for dark backgrounds */
-  --text-secondary: #b8b8b8; /* Secondary text color */
-  --shadow-color: rgba(114, 9, 183, 0.5); /* Purple shadow */
-  --card-bg: #242447; /* Card background */
-  --card-hover: #2e2e5a; /* Card hover state */
-  --nav-bg: #533483; /* Navigation background */
+  /* Dark theme color palette */
+  --primary-dark: #1a1a1a;
+  --primary-light: #2a2a2a;
+  --accent-primary: #e94560;
+  --accent-secondary: #d13a52;
+  --text-primary: #ffffff;
+  --text-secondary: #cccccc;
+  --shadow-color: rgba(0, 0, 0, 0.2);
+  --card-bg: #2a2a2a;
+  --card-hover: #3a3a3a;
+  --nav-bg: #1a1a1a;
 }
 
 * {
@@ -60,11 +60,11 @@ header {
 
 /* Enhanced Navigation Styling */
 nav {
-  margin-top: 20px;
   background-color: var(--nav-bg);
+  margin-top: 20px;
   padding: 10px;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 8px var(--shadow-color);
 }
 
 nav ul {
@@ -90,16 +90,13 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-  background-color: var(--accent-secondary);
-  color: white;
-  transform: translateY(-3px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
 }
 
 .active, nav ul li a.active {
-  background-color: var(--accent-secondary);
-  color: white;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: var(--accent-primary);
+  box-shadow: 0 2px 4px rgba(233, 69, 96, 0.2);
 }
 
 /* Main content */
@@ -117,7 +114,7 @@ nav ul li a:hover {
 }
 
 .toggle-btn {
-  background-color: var(--primary-light);
+  background-color: var(--card-bg);
   color: var(--text-primary);
   border: none;
   padding: 10px 20px;
@@ -135,7 +132,6 @@ nav ul li a:hover {
 
 .toggle-btn.active {
   background-color: var(--accent-primary);
-  color: white;
 }
 
 /* Character cards */
@@ -149,7 +145,7 @@ nav ul li a:hover {
   background-color: var(--card-bg);
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px var(--shadow-color);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
   position: relative;
@@ -165,7 +161,7 @@ nav ul li a:hover {
   position: absolute;
   top: 10px;
   left: 10px;
-  background-color: var(--accent-secondary);
+  background-color: var(--accent-primary);
   color: white;
   width: 30px;
   height: 30px;
@@ -196,7 +192,7 @@ nav ul li a:hover {
 
 .character-title {
   font-size: 0.9rem;
-  color: var(--accent-secondary);
+  color: var(--accent-primary);
   margin-bottom: 10px;
 }
 
@@ -252,11 +248,11 @@ nav ul li a:hover {
 
 /* Custom ranking section */
 .custom-ranking {
-  margin-top: 50px;
-  padding: 30px;
   background-color: var(--primary-light);
+  padding: 2rem;
   border-radius: 8px;
-  box-shadow: 0 4px 12px var(--shadow-color);
+  margin-top: 2rem;
+  box-shadow: 0 4px 8px var(--shadow-color);
 }
 
 .custom-ranking h2 {
@@ -276,6 +272,8 @@ nav ul li a:hover {
   grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
   gap: 15px;
   margin-bottom: 20px;
+  background-color: var(--card-bg);
+  border: 2px dashed var(--text-secondary);
 }
 
 .drag-item {
@@ -285,6 +283,7 @@ nav ul li a:hover {
   cursor: move;
   text-align: center;
   transition: all 0.3s ease;
+  box-shadow: 0 2px 4px var(--shadow-color);
 }
 
 .drag-item:hover {
@@ -311,6 +310,90 @@ nav ul li a:hover {
 .save-ranking {
   display: block;
   margin: 20px auto 0;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--accent-primary);
+  color: var(--text-primary);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.save-ranking:hover {
+  background-color: var(--accent-secondary);
+  transform: translateY(-2px);
+}
+
+/* Quiz section */
+.quiz-section {
+  margin-top: 50px;
+  padding: 30px;
+  background-color: var(--primary-light);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+.quiz-section h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: var(--accent-secondary);
+}
+
+.quiz-section p {
+  text-align: center;
+  margin-bottom: 30px;
+  color: var(--text-secondary);
+}
+
+.quiz-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.quiz-image {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.quiz-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.quiz-option {
+  padding: 10px;
+  background-color: var(--card-bg);
+  border: 2px solid transparent;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.quiz-option:hover {
+  background-color: var(--card-hover);
+}
+
+.quiz-option.selected {
+  border-color: var(--accent-primary);
+}
+
+.quiz-option.correct {
+  border-color: #4CAF50;
+  background-color: rgba(76, 175, 80, 0.2);
+}
+
+.quiz-option.incorrect {
+  border-color: #F44336;
+  background-color: rgba(244, 67, 54, 0.2);
+}
+
+.quiz-submit {
+  display: block;
+  margin: 20px auto 0;
   padding: 10px 20px;
   background-color: var(--accent-primary);
   color: white;
@@ -320,237 +403,30 @@ nav ul li a:hover {
   transition: background-color 0.3s ease;
 }
 
-.save-ranking:hover {
+.quiz-submit:hover {
   background-color: var(--accent-secondary);
 }
 
-/* Quiz section */
-.quiz-section {
-  background: #1a1a1a;
-  padding: 2rem;
-  border-radius: 8px;
-  margin-bottom: 2rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.quiz-nav {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  margin-bottom: 2rem;
-}
-
-.quiz-nav-btn {
-  background: #2a2a2a;
-  color: #fff;
-  border: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: all 0.3s;
-  font-size: 1rem;
-}
-
-.quiz-nav-btn:hover {
-  background: #3a3a3a;
-  transform: translateY(-2px);
-}
-
-.quiz-nav-btn.active {
-  background: #e94560;
-}
-
-.question-counter {
-  text-align: center;
-  color: #fff;
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
-  padding: 1rem;
-  background: #2a2a2a;
-  border-radius: 4px;
-  display: none;
-}
-
-.question-counter.active {
-  display: block;
-}
-
-.quiz-container {
-  display: none;
-}
-
-.quiz-container.active {
-  display: block;
-}
-
-.quiz-image {
-  width: 100%;
-  max-width: 400px;
-  height: auto;
-  margin: 0 auto 2rem;
-  display: block;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.quiz-options {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-  margin-bottom: 2rem;
-}
-
-.quiz-option {
-  background: #2a2a2a;
-  color: #fff;
-  padding: 1rem;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: all 0.3s;
-  text-align: center;
-}
-
-.quiz-option:hover {
-  background: #3a3a3a;
-  transform: translateY(-2px);
-}
-
-.quiz-option.selected {
-  background: #533483;
-}
-
-.quiz-option.correct {
-  background: #4CAF50;
-}
-
-.quiz-option.incorrect {
-  background: #F44336;
-}
-
-.quiz-submit {
-  display: block;
-  margin: 0 auto;
-  background: #e94560;
-  color: #fff;
-  border: none;
-  padding: 1rem 2rem;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: all 0.3s;
-  font-size: 1.1rem;
-}
-
-.quiz-submit:hover {
-  background: #d13a52;
-  transform: translateY(-2px);
-}
-
 .quiz-result {
+  margin-top: 20px;
   text-align: center;
-  margin-top: 1rem;
-  font-size: 1.2rem;
-  font-weight: 600;
+  font-weight: bold;
 }
 
-.leaderboard {
-  display: none;
-}
-
-.leaderboard.active {
+.quiz-next {
   display: block;
-}
-
-.leaderboard-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 1rem;
-  color: #fff;
-}
-
-.leaderboard-table th,
-.leaderboard-table td {
-  padding: 0.75rem;
-  text-align: left;
-  border-bottom: 1px solid #333;
-}
-
-.leaderboard-table th {
-  background: #2a2a2a;
-  font-weight: 600;
-}
-
-.leaderboard-table tr:hover {
-  background: #2a2a2a;
-}
-
-.leaderboard-table td:nth-child(3) {
-  color: #e94560;
-  font-weight: 600;
-}
-
-.personal-best {
-  color: #fff;
-  margin-bottom: 1rem;
-  padding: 1rem;
-  background: #2a2a2a;
-  border-radius: 4px;
-  display: none;
-}
-
-.name-modal {
-  display: none;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: #1a1a1a;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-  z-index: 1000;
-  width: 90%;
-  max-width: 400px;
-}
-
-.modal-overlay {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.7);
-  z-index: 999;
-}
-
-.name-modal h3 {
-  color: #fff;
-  margin-bottom: 1rem;
-}
-
-.name-modal input {
-  width: 100%;
-  padding: 0.75rem;
-  margin-bottom: 1rem;
-  border: 1px solid #333;
-  border-radius: 4px;
-  background: #2a2a2a;
-  color: #fff;
-}
-
-.name-modal button {
-  background: #e94560;
-  color: #fff;
+  margin: 20px auto 0;
+  padding: 10px 20px;
+  background-color: var(--accent-secondary);
+  color: white;
   border: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 4px;
+  border-radius: 5px;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: background-color 0.3s ease;
 }
 
-.name-modal button:hover {
-  background: #d13a52;
-  transform: translateY(-2px);
+.quiz-next:hover {
+  background-color: var(--accent-primary);
 }
 
 /* Footer */
