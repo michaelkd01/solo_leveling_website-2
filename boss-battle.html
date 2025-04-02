@@ -190,11 +190,94 @@
         }
 
         .ability {
+            background: var(--card-bg);
             padding: 0.5rem 1rem;
-            background-color: var(--primary-color);
             border-radius: 5px;
+            font-size: 0.9rem;
             color: var(--text-color);
-            font-weight: bold;
+            border: 1px solid var(--accent-color);
+        }
+
+        .battle-progress {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--card-bg);
+            padding: 1rem;
+            border-radius: 10px;
+            border: 1px solid var(--accent-color);
+        }
+
+        .progress-boss {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 0.5rem 0;
+            padding: 0.5rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .progress-boss.completed {
+            background: rgba(0, 255, 0, 0.1);
+            border: 1px solid #00ff00;
+        }
+
+        .progress-boss.current {
+            background: rgba(255, 165, 0, 0.1);
+            border: 1px solid #ffa500;
+        }
+
+        .progress-boss.upcoming {
+            opacity: 0.5;
+        }
+
+        .boss-phase {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--card-bg);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            border: 1px solid var(--accent-color);
+            font-size: 0.9rem;
+            color: var(--text-color);
+            display: none;
+        }
+
+        .boss-phase.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateX(-50%) translateY(-20px); }
+            to { opacity: 1; transform: translateX(-50%) translateY(0); }
+        }
+
+        .special-attack {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 0, 0, 0.2);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            color: #ff0000;
+            text-shadow: 0 0 10px #ff0000;
+        }
+
+        .special-attack.active {
+            display: flex;
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
         }
 
         .logo-container {
@@ -253,29 +336,56 @@
             <ul>
                 <li><a href="rankings.html" class="nav-link">Rankings</a></li>
                 <li><a href="quiz.html" class="nav-link">Character Quiz</a></li>
-                <li><a href="boss-fights.html" class="nav-link">Boss Fights</a></li>
                 <li><a href="boss-battle.html" class="nav-link active">Boss Battle</a></li>
             </ul>
         </div>
     </nav>
 
     <main class="battle-container">
-        <div class="battle-info">
-            <div class="player-stats">
-                <h3>Player</h3>
-                <div class="health-bar">
-                    <div class="health-fill" id="playerHealth" style="width: 100%"></div>
-                </div>
-                <p>HP: <span id="playerHealthText">100</span>/100</p>
+        <div class="battle-progress">
+            <h3>Boss Progression</h3>
+            <div class="progress-boss completed" id="kasaka-progress">
+                <span>✓</span> Kasaka
             </div>
-            <div class="boss-stats">
-                <h3>Kasaka</h3>
-                <div class="health-bar">
-                    <div class="health-fill boss-health-fill" id="bossHealth" style="width: 100%"></div>
-                </div>
-                <p>HP: <span id="bossHealthText">1000</span>/1000</p>
+            <div class="progress-boss current" id="igris-progress">
+                <span>⚔️</span> Igris
+            </div>
+            <div class="progress-boss upcoming" id="tank-progress">
+                <span>🔒</span> Tank
+            </div>
+            <div class="progress-boss upcoming" id="baruka-progress">
+                <span>🔒</span> Baruka
             </div>
         </div>
+
+        <div class="battle-container">
+            <div class="health-bar player-health">
+                <div class="health-fill"></div>
+                <span class="health-text">Player: 100/100 HP</span>
+            </div>
+
+            <div class="boss-container">
+                <div class="boss-phase" id="boss-phase">Phase 1</div>
+                <div class="special-attack" id="special-attack">Special Attack!</div>
+                <img src="images/boss-fights/igris.jpg" alt="Igris" class="boss-image" id="boss-image">
+                <div class="boss-abilities">
+                    <div class="ability">Sword Mastery</div>
+                    <div class="ability">Shadow Step</div>
+                    <div class="ability">Dark Energy</div>
+                </div>
+            </div>
+
+            <div class="health-bar boss-health">
+                <div class="health-fill"></div>
+                <span class="health-text">Igris: 1000/1000 HP</span>
+            </div>
+
+            <div class="battle-log">
+                <h3>Battle Log</h3>
+                <div class="log-messages"></div>
+            </div>
+        </div>
+    </main>
 
         <div class="boss-container" id="bossContainer">
             <img src="images/boss-fights/kasaka.jpg" alt="Kasaka" class="boss-image">
