@@ -231,38 +231,53 @@
 
         .leaderboard {
             display: none;
+            background: #1a1a1a;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         .leaderboard.active {
             display: block;
         }
 
+        .leaderboard h3 {
+            color: #fff;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
         .leaderboard-table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 1rem;
-            color: #fff;
+            background: #2a2a2a;
+            border-radius: 8px;
+            overflow: hidden;
         }
 
         .leaderboard-table th,
         .leaderboard-table td {
-            padding: 0.75rem;
+            padding: 1rem;
             text-align: left;
+            color: #fff;
             border-bottom: 1px solid #333;
         }
 
         .leaderboard-table th {
             background: #2a2a2a;
             font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
         }
 
         .leaderboard-table tr:hover {
-            background: #2a2a2a;
+            background: #3a3a3a;
         }
 
-        .leaderboard-table td:nth-child(3) {
-            color: #e94560;
-            font-weight: 600;
+        .leaderboard-table tr:last-child td {
+            border-bottom: none;
         }
 
         .personal-best {
