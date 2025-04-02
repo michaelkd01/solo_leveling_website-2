@@ -9,6 +9,208 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <style>
+        :root {
+            --primary-color: #8B0000;  /* Deep red from Igris's armor */
+            --secondary-color: #DAA520;  /* Gold accents from armor details */
+            --background-color: #1a1a1a;  /* Dark background */
+            --text-color: #ffffff;
+            --card-bg: #2a2a2a;
+            --hover-color: #A52A2A;  /* Lighter red for hover states */
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+
+        .header {
+            background-color: #000000;  /* Pure black for Igris's armor */
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+
+        .logo-container {
+            width: 200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .logo-container img {
+            max-width: 100%;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-container img:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-bar {
+            background-color: #000000;
+            padding: 1rem 0;
+            margin-top: 1rem;
+        }
+
+        .nav-center {
+            display: flex;
+            justify-content: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .nav-center ul {
+            display: flex;
+            gap: 3rem;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .nav-center .nav-link {
+            font-size: 1.2rem;
+            font-weight: 500;
+            padding: 0.5rem 1.5rem;
+            border-radius: 4px;
+            transition: all 0.3s;
+            color: var(--text-color);
+            text-decoration: none;
+            border: 1px solid var(--secondary-color);
+        }
+
+        .nav-center .nav-link:hover {
+            background-color: var(--hover-color);
+            transform: translateY(-2px);
+        }
+
+        .nav-center .nav-link.active {
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            box-shadow: 0 2px 4px rgba(139, 0, 0, 0.2);
+        }
+
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/sl-background.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 4rem 0;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-color);
+            margin-bottom: 2rem;
+        }
+
+        .rankings-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .rankings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .ranking-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s ease;
+            border: 1px solid var(--secondary-color);
+        }
+
+        .ranking-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .ranking-card h3 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .ranking-card p {
+            color: #cccccc;
+            margin-bottom: 1.5rem;
+        }
+
+        .ranking-card .cta-button {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            border: 1px solid var(--secondary-color);
+            display: inline-block;
+        }
+
+        .ranking-card .cta-button:hover {
+            background-color: var(--hover-color);
+        }
+
+        .admin-section {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .admin-btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            border: 2px solid var(--secondary-color);
+        }
+
+        .admin-btn:hover {
+            background-color: var(--hover-color);
+        }
+
+        footer {
+            background-color: #000000;
+            color: #ffffff;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+        }
+
+        footer a {
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
         .profile-section {
             display: none;
             margin-top: 2rem;
