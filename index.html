@@ -194,26 +194,27 @@
         .profile-circle {
             position: fixed;
             right: 2rem;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 60px;
-            height: 60px;
+            top: 1rem;
+            transform: none;
+            width: 40px;
+            height: 40px;
             background: #2196F3;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: all 0.3s;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
         }
         .profile-circle:hover {
-            transform: translateY(-50%) scale(1.1);
+            transform: scale(1.1);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
         .profile-circle i {
             color: white;
-            font-size: 24px;
+            font-size: 18px;
         }
         .profile-circle.active {
             background: #e94560;

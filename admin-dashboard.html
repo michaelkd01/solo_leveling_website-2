@@ -10,11 +10,11 @@
     <link rel="stylesheet" href="css/styles.css">
     <style>
         .admin-dashboard {
-            background-color: var(--primary-light);
+            background-color: #1a1a1a;
             border-radius: 8px;
             padding: 30px;
             margin: 20px 0;
-            box-shadow: 0 4px 12px var(--shadow-color);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
         
         .admin-header {
@@ -25,12 +25,12 @@
         }
         
         .admin-title h2 {
-            color: var(--accent-secondary);
+            color: #fff;
             margin-bottom: 10px;
         }
         
         .admin-title p {
-            color: var(--text-secondary);
+            color: #ccc;
         }
         
         .logout-btn {
@@ -57,7 +57,7 @@
         }
         
         .admin-card {
-            background-color: var(--card-bg);
+            background-color: #2a2a2a;
             border-radius: 8px;
             padding: 25px;
             text-align: center;
@@ -67,54 +67,136 @@
         
         .admin-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 16px var(--shadow-color);
-            background-color: var(--card-hover);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            background-color: #333;
         }
         
         .admin-card-icon {
             font-size: 3rem;
             margin-bottom: 15px;
-            color: var(--accent-primary);
+            color: #e94560;
         }
         
         .admin-card h3 {
-            color: var(--text-primary);
+            color: #fff;
             margin-bottom: 10px;
         }
         
         .admin-card p {
-            color: var(--text-secondary);
+            color: #ccc;
             margin-bottom: 20px;
         }
         
         .admin-card-btn {
-            background-color: var(--accent-primary);
+            background-color: #e94560;
             color: white;
             border: none;
             border-radius: 5px;
             padding: 10px 20px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: all 0.3s ease;
             text-decoration: none;
             display: inline-block;
         }
         
         .admin-card-btn:hover {
-            background-color: var(--accent-secondary);
+            background-color: #d13a52;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(233, 69, 96, 0.2);
+        }
+
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo-container {
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .logo {
+            display: block;
+            cursor: pointer;
+            transition: opacity 0.3s;
+            max-width: 200px;
+            margin: 0 auto;
+        }
+        
+        .logo:hover {
+            opacity: 0.8;
+        }
+        
+        .logo img {
+            width: 100%;
+            height: auto;
+        }
+        
+        .nav-bar {
+            width: 100%;
+            background: #1a1a1a;
+            padding: 1rem 0;
+            margin-top: 1rem;
+        }
+        
+        .nav-center {
+            display: flex;
+            justify-content: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .nav-center ul {
+            display: flex;
+            gap: 3rem;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        
+        .nav-center .nav-link {
+            font-size: 1.2rem;
+            font-weight: 500;
+            padding: 0.5rem 1.5rem;
+            border-radius: 4px;
+            transition: all 0.3s;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .nav-center .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        .nav-center .nav-link.active {
+            background-color: #e94560;
+            color: white;
+            box-shadow: 0 2px 4px rgba(233, 69, 96, 0.2);
         }
     </style>
 </head>
 <body>
     <header>
-        <div class="container header-content">
-            <div class="logo">Solo <span>Leveling</span></div>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Rankings</a></li>
-                    <li><a href="quiz.html">Character Quiz</a></li>
-                    <li><a href="admin-dashboard.html" class="active" style="background-color: #e94560; font-weight: bold;">Admin</a></li>
-                </ul>
-            </nav>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-container">
+                    <a href="index.html" class="logo">
+                        <img src="images/logo.png" alt="SoloRanking">
+                    </a>
+                </div>
+                <nav class="nav-bar">
+                    <div class="nav-center">
+                        <ul>
+                            <li><a href="index.html" class="nav-link">Rankings</a></li>
+                            <li><a href="quiz.html" class="nav-link">Character Quiz</a></li>
+                            <li><a href="admin-dashboard.html" class="nav-link active">Admin</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
         </div>
     </header>
 
