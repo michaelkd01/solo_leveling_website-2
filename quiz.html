@@ -8,27 +8,206 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .quiz-section {
+            background: #1a1a1a;
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .quiz-nav {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .quiz-nav-btn {
+            background: #2a2a2a;
+            color: #fff;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1rem;
+        }
+
+        .quiz-nav-btn:hover {
+            background: #3a3a3a;
+            transform: translateY(-2px);
+        }
+
+        .quiz-nav-btn.active {
+            background: #e94560;
+        }
+
+        .question-counter {
+            text-align: center;
+            color: #fff;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: #2a2a2a;
+            border-radius: 4px;
+            display: none;
+        }
+
+        .question-counter.active {
+            display: block;
+        }
+
+        .quiz-container {
+            display: none;
+        }
+
+        .quiz-container.active {
+            display: block;
+        }
+
+        .leaderboard {
+            display: none;
+        }
+
+        .leaderboard.active {
+            display: block;
+        }
+
+        .leaderboard-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            color: #fff;
+        }
+
+        .leaderboard-table th,
+        .leaderboard-table td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #333;
+        }
+
+        .leaderboard-table th {
+            background: #2a2a2a;
+            font-weight: 600;
+        }
+
+        .leaderboard-table tr:hover {
+            background: #2a2a2a;
+        }
+
+        .leaderboard-table td:nth-child(3) {
+            color: #e94560;
+            font-weight: 600;
+        }
+
+        .personal-best {
+            color: #fff;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: #2a2a2a;
+            border-radius: 4px;
+            display: none;
+        }
+
+        .name-modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #1a1a1a;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            width: 90%;
+            max-width: 400px;
+        }
+
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+        }
+
+        .name-modal h3 {
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+
+        .name-modal input {
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+            border: 1px solid #333;
+            border-radius: 4px;
+            background: #2a2a2a;
+            color: #fff;
+        }
+
+        .name-modal button {
+            background: #e94560;
+            color: #fff;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .name-modal button:hover {
+            background: #d13a52;
+            transform: translateY(-2px);
+        }
+    </style>
 </head>
 <body>
     <header>
-        <div class="container header-content">
-            <div class="logo">Solo <span>Leveling</span></div>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Rankings</a></li>
-                    <li><a href="quiz.html" class="active">Character Quiz</a></li>
-                    <li><a href="admin-login.html" style="background-color: #e94560; font-weight: bold;">Admin</a></li>
-                </ul>
-            </nav>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-container">
+                    <a href="index.html" class="logo">
+                        <img src="images/logo.png" alt="SoloRanking">
+                    </a>
+                </div>
+                <nav class="nav-bar">
+                    <div class="nav-center">
+                        <ul>
+                            <li><a href="index.html" class="nav-link">Rankings</a></li>
+                            <li><a href="quiz.html" class="nav-link active">Character Quiz</a></li>
+                            <li><a href="admin-dashboard.html" class="nav-link">Admin</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
         </div>
     </header>
 
     <main class="container main-content">
+        <div class="personal-best" id="personal-best"></div>
+        
         <section class="quiz-section">
             <h2>Character Naming Quiz</h2>
             <p>Test your knowledge of Solo Leveling characters! Can you identify them from their images?</p>
             
-            <div class="quiz-container" id="quiz-container">
+            <div class="quiz-nav">
+                <button class="quiz-nav-btn active" data-section="quiz">Take Quiz</button>
+                <button class="quiz-nav-btn" data-section="leaderboard">Leaderboard</button>
+            </div>
+
+            <div class="question-counter" id="question-counter">
+                Question <span id="current-question">1</span> of 10
+            </div>
+            
+            <div class="quiz-container active" id="quiz-container">
                 <img src="" alt="Character Image" class="quiz-image" id="quiz-image">
                 <div class="quiz-options" id="quiz-options">
                     <!-- Quiz options will be dynamically inserted here -->
@@ -37,8 +216,34 @@
                 <div class="quiz-result" id="quiz-result"></div>
                 <button class="quiz-next" id="quiz-next" style="display: none;">Next Character</button>
             </div>
+
+            <div class="leaderboard" id="leaderboard">
+                <h3>Top Scores</h3>
+                <table class="leaderboard-table">
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Name</th>
+                            <th>Score</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody id="leaderboard-body">
+                        <!-- Leaderboard entries will be dynamically inserted here -->
+                    </tbody>
+                </table>
+            </div>
         </section>
     </main>
+
+    <!-- Name Input Modal -->
+    <div class="modal-overlay" id="modal-overlay"></div>
+    <div class="name-modal" id="name-modal">
+        <h3>Congratulations!</h3>
+        <p style="color: #fff; margin-bottom: 1rem;">You scored <span id="final-score"></span>/10</p>
+        <input type="text" id="player-name" placeholder="Enter your name" maxlength="20">
+        <button id="save-score">Save Score</button>
+    </div>
 
     <footer>
         <div class="container">
