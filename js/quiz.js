@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const quizOptions = document.getElementById('quiz-options');
     const quizSubmit = document.getElementById('quiz-submit');
     const quizResult = document.getElementById('quiz-result');
+    const quizNext = document.getElementById('quiz-next');
     const nameModal = document.getElementById('name-modal');
     const modalOverlay = document.getElementById('modal-overlay');
     const playerNameInput = document.getElementById('player-name');
@@ -56,6 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Event listeners
     quizSubmit.addEventListener('click', checkAnswer);
+    quizNext.addEventListener('click', nextQuestion);
     saveScoreButton.addEventListener('click', saveScore);
 
     // Function to initialize the quiz
@@ -68,7 +70,6 @@ document.addEventListener('DOMContentLoaded', function() {
         // Reset UI
         questionCounter.classList.add('active');
         currentQuestionSpan.textContent = '1';
-        quizResult.textContent = '';
         
         // Start with the first question
         loadQuestion();
@@ -217,6 +218,21 @@ document.addEventListener('DOMContentLoaded', function() {
         quizResult.textContent = ''; // Clear the result text
     }
 
+    // Function to load the next question
+    function nextQuestion() {
+        // If this is the last question, restart the quiz
+        if (totalQuestions === 10) {
+            quizNext.textContent = 'Next Character';
+            modalOverlay.style.display = 'none';
+            nameModal.style.display = 'none';
+            initializeQuiz();
+            return;
+        }
+        
+        // Load a new question
+        loadQuestion();
+    }
+
     // Function to save the score
     function saveScore() {
         const playerName = playerNameInput.value.trim();
@@ -264,9 +280,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Switch to leaderboard view
         navButtons[1].click();
-
-        // Reset the quiz
-        initializeQuiz();
     }
 
     // Function to update the leaderboard
