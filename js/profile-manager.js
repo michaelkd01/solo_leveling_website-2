@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const sections = document.querySelectorAll('section');
     const mainContent = document.querySelector('.main-content');
     const profileCircle = document.getElementById('profile-circle');
+    const profilesSection = document.getElementById('profiles-section');
 
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
@@ -14,10 +15,11 @@ document.addEventListener('DOMContentLoaded', function() {
             navLinks.forEach(l => l.classList.remove('active'));
             link.classList.add('active');
             
-            // Hide all sections
+            // Hide all sections including profiles
             sections.forEach(section => {
                 section.classList.remove('active');
             });
+            profilesSection.classList.remove('active');
 
             // Show only the target section
             const targetSectionElement = document.getElementById(`${targetSection}-section`);
@@ -26,18 +28,10 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             // Update profile circle state
-            if (targetSection === 'profiles') {
-                profileCircle.classList.add('active');
-            } else {
-                profileCircle.classList.remove('active');
-            }
+            profileCircle.classList.remove('active');
 
-            // Adjust main content padding based on section
-            if (targetSection === 'profiles') {
-                mainContent.style.paddingTop = '2rem';
-            } else {
-                mainContent.style.paddingTop = '';
-            }
+            // Reset main content padding
+            mainContent.style.paddingTop = '';
         });
     });
 

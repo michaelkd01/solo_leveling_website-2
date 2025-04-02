@@ -326,7 +326,21 @@
             document.getElementById('simple-view-btn').click();
         }
         function showProfiles() {
-            document.querySelector('[data-section="profiles"]').click();
+            const profilesSection = document.getElementById('profiles-section');
+            const rankingsSection = document.getElementById('rankings-section');
+            const quizSection = document.getElementById('quiz-section');
+            const profileCircle = document.getElementById('profile-circle');
+
+            // Hide other sections
+            rankingsSection.classList.remove('active');
+            quizSection.classList.remove('active');
+
+            // Show profiles section
+            profilesSection.classList.add('active');
+            profileCircle.classList.add('active');
+
+            // Update main content padding
+            document.querySelector('.main-content').style.paddingTop = '2rem';
         }
     </script>
 </body>
