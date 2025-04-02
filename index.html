@@ -126,6 +126,19 @@
             color: #ccc;
             margin-bottom: 2rem;
         }
+        .quiz-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+        .quiz-actions .add-profile-btn {
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        .quiz-actions .add-profile-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
         .main-content {
             transition: padding-top 0.3s ease;
         }
@@ -282,8 +295,11 @@
         <!-- Quiz Section -->
         <section id="quiz-section" class="profile-section">
             <h2>Character Quiz</h2>
-            <p>Test your knowledge of Solo Leveling characters!</p>
-            <a href="quiz.html" class="add-profile-btn">Take the Quiz</a>
+            <p>Test your knowledge of Solo Leveling characters! Take our quiz to see how well you know the characters.</p>
+            <div class="quiz-actions">
+                <a href="quiz.html" class="add-profile-btn">Start Quiz</a>
+                <a href="quiz.html#leaderboard" class="add-profile-btn" style="background: #2a2a2a;">View Leaderboard</a>
+            </div>
         </section>
 
         <!-- Profile Circle -->
