@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <style>
-        /* Header and Logo styles */
+        /* Header and Navigation styles */
         .header-content {
             display: flex;
             flex-direction: column;
@@ -20,7 +20,7 @@
         .logo-container {
             margin-bottom: 1rem;
             text-align: center;
-            width: 200px; /* Fixed width */
+            width: 200px;
         }
 
         .logo {
@@ -36,8 +36,51 @@
         .logo img {
             width: 100%;
             height: auto;
-            max-width: 200px; /* Maximum width */
+            max-width: 200px;
             object-fit: contain;
+        }
+
+        .nav-bar {
+            width: 100%;
+            background: #1a1a1a;
+            padding: 1rem 0;
+            margin-top: 1rem;
+        }
+
+        .nav-center {
+            display: flex;
+            justify-content: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .nav-center ul {
+            display: flex;
+            gap: 3rem;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .nav-center .nav-link {
+            font-size: 1.2rem;
+            font-weight: 500;
+            padding: 0.5rem 1.5rem;
+            border-radius: 4px;
+            transition: all 0.3s;
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-center .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .nav-center .nav-link.active {
+            background-color: #e94560;
+            color: white;
+            box-shadow: 0 2px 4px rgba(233, 69, 96, 0.2);
         }
 
         .quiz-section {
@@ -198,6 +241,27 @@
             background: #d13a52;
             transform: translateY(-2px);
         }
+
+        .admin-section {
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .admin-btn {
+            background: #e94560;
+            color: #fff;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1rem;
+        }
+
+        .admin-btn:hover {
+            background: #d13a52;
+            transform: translateY(-2px);
+        }
     </style>
 </head>
 <body>
@@ -214,7 +278,6 @@
                         <ul>
                             <li><a href="index.html" class="nav-link">Rankings</a></li>
                             <li><a href="quiz.html" class="nav-link active">Character Quiz</a></li>
-                            <li><a href="admin-dashboard.html" class="nav-link">Admin</a></li>
                         </ul>
                     </div>
                 </nav>
@@ -263,6 +326,11 @@
                     </tbody>
                 </table>
             </div>
+        </section>
+
+        <!-- Admin Section -->
+        <section class="admin-section">
+            <a href="admin-dashboard.html" class="admin-btn">Admin Panel</a>
         </section>
     </main>
 
