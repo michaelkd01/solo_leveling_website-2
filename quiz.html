@@ -9,6 +9,37 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <style>
+        /* Header and Logo styles */
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo-container {
+            margin-bottom: 1rem;
+            text-align: center;
+            width: 200px; /* Fixed width */
+        }
+
+        .logo {
+            display: block;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+        .logo:hover {
+            opacity: 0.8;
+        }
+
+        .logo img {
+            width: 100%;
+            height: auto;
+            max-width: 200px; /* Maximum width */
+            object-fit: contain;
+        }
+
         .quiz-section {
             background: #1a1a1a;
             padding: 2rem;
