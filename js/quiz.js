@@ -80,7 +80,6 @@ document.addEventListener('DOMContentLoaded', function() {
         // Reset UI
         quizResult.textContent = '';
         quizSubmit.style.display = 'block';
-        quizNext.style.display = 'none';
         selectedOption = null;
         
         // Remove selected class from all options
@@ -194,13 +193,19 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         
-        // Show next button and hide submit button
+        // Hide submit button
         quizSubmit.style.display = 'none';
-        quizNext.style.display = 'block';
         
-        // If this is the last question, end the quiz
+        // If this is the last question, end the quiz after delay
         if (totalQuestions === 10) {
-            endQuiz();
+            setTimeout(() => {
+                endQuiz();
+            }, 2000);
+        } else {
+            // Otherwise, load next question after delay
+            setTimeout(() => {
+                loadQuestion();
+            }, 2000);
         }
     }
 
@@ -209,8 +214,8 @@ document.addEventListener('DOMContentLoaded', function() {
         finalScoreSpan.textContent = score;
         modalOverlay.style.display = 'block';
         nameModal.style.display = 'block';
-        quizNext.textContent = 'Restart Quiz';
         questionCounter.classList.remove('active');
+        quizResult.textContent = ''; // Clear the result text
     }
 
     // Function to load the next question
