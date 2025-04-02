@@ -247,6 +247,18 @@ nav ul li a:hover {
 }
 
 /* Custom ranking section */
+#rankings-section {
+  display: none;
+  background-color: var(--primary-dark);
+  padding: 2rem;
+  border-radius: 8px;
+}
+
+#rankings-section.active {
+  display: block;
+  background-color: var(--primary-dark);
+}
+
 .custom-ranking {
   background-color: var(--primary-light);
   padding: 2rem;
