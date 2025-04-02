@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boss Battle - Kasaka | Solo Leveling</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        :root {
+            --primary-color: #8B0000;  /* Deep red from Igris's armor */
+            --secondary-color: #A52A2A;  /* Lighter red for accents */
+            --background-color: #2a1b3d;  /* Deep purple background */
+            --text-color: #ffffff;
+            --card-bg: #2a2a2a;
+            --hover-color: #D22B2B;  /* Bright red for hover states */
+            --accent-color: #8B0000;  /* Deep red for borders and highlights */
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            background-color: var(--background-color);
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-bar {
+            background-color: var(--background-color);
+            padding: 1rem 0;
+            margin-top: 1rem;
+        }
+
+        .nav-center {
+            display: flex;
+            justify-content: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .nav-center ul {
+            display: flex;
+            gap: 3rem;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .nav-center .nav-link {
+            font-size: 1.2rem;
+            font-weight: 500;
+            padding: 0.5rem 1.5rem;
+            border-radius: 4px;
+            transition: all 0.3s;
+            color: var(--text-color);
+            text-decoration: none;
+            border: 1px solid var(--accent-color);
+        }
+
+        .nav-center .nav-link:hover {
+            background-color: var(--hover-color);
+            transform: translateY(-2px);
+        }
+
+        .nav-center .nav-link.active {
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            box-shadow: 0 2px 4px rgba(139, 0, 0, 0.2);
+        }
+
+        .battle-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .battle-info {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            border: 1px solid var(--accent-color);
+        }
+
+        .player-stats, .boss-stats {
+            text-align: center;
+        }
+
+        .health-bar {
+            width: 200px;
+            height: 20px;
+            background-color: #333;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 0.5rem 0;
+        }
+
+        .health-fill {
+            height: 100%;
+            background-color: #4CAF50;
+            transition: width 0.3s ease;
+        }
+
+        .boss-health-fill {
+            background-color: #f44336;
+        }
+
+        .boss-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin: 2rem 0;
+            cursor: pointer;
+            transition: transform 0.1s;
+        }
+
+        .boss-container:active {
+            transform: scale(0.95);
+        }
+
+        .boss-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: transform 0.3s;
+        }
+
+        .damage-text {
+            position: absolute;
+            color: #ff4444;
+            font-size: 24px;
+            font-weight: bold;
+            pointer-events: none;
+            animation: floatUp 1s ease-out forwards;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+        }
+
+        .battle-log {
+            width: 100%;
+            max-height: 200px;
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 1rem;
+            margin-top: 2rem;
+            overflow-y: auto;
+            border: 1px solid var(--accent-color);
+        }
+
+        .battle-message {
+            margin: 0.5rem 0;
+            padding: 0.5rem;
+            border-radius: 5px;
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+
+        .boss-abilities {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .ability {
+            padding: 0.5rem 1rem;
+            background-color: var(--primary-color);
+            border-radius: 5px;
+            color: var(--text-color);
+            font-weight: bold;
+        }
+
+        .logo-container {
+            width: 200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .logo-container img {
+            max-width: 100%;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-container img:hover {
+            transform: scale(1.05);
+        }
+
+        footer {
+            background-color: #000000;
+            color: #ffffff;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+        }
+
+        footer a {
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-container">
+                    <a href="index.html" class="logo">
+                        <img src="images/logo.png" alt="SoloRanking">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="nav-bar">
+        <div class="nav-center">
+            <ul>
+                <li><a href="rankings.html" class="nav-link">Rankings</a></li>
+                <li><a href="quiz.html" class="nav-link">Character Quiz</a></li>
+                <li><a href="boss-fights.html" class="nav-link">Boss Fights</a></li>
+                <li><a href="boss-battle.html" class="nav-link active">Boss Battle</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="battle-container">
+        <div class="battle-info">
+            <div class="player-stats">
+                <h3>Player</h3>
+                <div class="health-bar">
+                    <div class="health-fill" id="playerHealth" style="width: 100%"></div>
+                </div>
+                <p>HP: <span id="playerHealthText">100</span>/100</p>
+            </div>
+            <div class="boss-stats">
+                <h3>Kasaka</h3>
+                <div class="health-bar">
+                    <div class="health-fill boss-health-fill" id="bossHealth" style="width: 100%"></div>
+                </div>
+                <p>HP: <span id="bossHealthText">1000</span>/1000</p>
+            </div>
+        </div>
+
+        <div class="boss-container" id="bossContainer">
+            <img src="images/boss-fights/kasaka.jpg" alt="Kasaka" class="boss-image">
+        </div>
+
+        <div class="boss-abilities">
+            <div class="ability">Venomous Bite</div>
+            <div class="ability">Tail Whip</div>
+            <div class="ability">Poison Cloud</div>
+        </div>
+
+        <div class="battle-log" id="battleLog">
+            <div class="battle-message">Battle started! Click on Kasaka to deal damage!</div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Solo Leveling Fan Site | Images from <a href="https://solo-leveling.fandom.com/" target="_blank">Solo Leveling Wiki</a></p>
+        </div>
+    </footer>
+
+    <script>
+        let bossHealth = 1000;
+        let playerHealth = 100;
+        let isBossDefeated = false;
+        let isPlayerDefeated = false;
+
+        const bossContainer = document.getElementById('bossContainer');
+        const bossHealthBar = document.getElementById('bossHealth');
+        const bossHealthText = document.getElementById('bossHealthText');
+        const playerHealthBar = document.getElementById('playerHealth');
+        const playerHealthText = document.getElementById('playerHealthText');
+        const battleLog = document.getElementById('battleLog');
+
+        function addBattleMessage(message) {
+            const messageElement = document.createElement('div');
+            messageElement.className = 'battle-message';
+            messageElement.textContent = message;
+            battleLog.appendChild(messageElement);
+            battleLog.scrollTop = battleLog.scrollHeight;
+        }
+
+        function createDamageText(x, y, damage) {
+            const damageElement = document.createElement('div');
+            damageElement.className = 'damage-text';
+            damageElement.textContent = `-${damage}`;
+            damageElement.style.left = `${x}px`;
+            damageElement.style.top = `${y}px`;
+            bossContainer.appendChild(damageElement);
+
+            setTimeout(() => {
+                damageElement.remove();
+            }, 1000);
+        }
+
+        function updateBossHealth(damage) {
+            bossHealth = Math.max(0, bossHealth - damage);
+            const healthPercentage = (bossHealth / 1000) * 100;
+            bossHealthBar.style.width = `${healthPercentage}%`;
+            bossHealthText.textContent = bossHealth;
+
+            if (bossHealth <= 0 && !isBossDefeated) {
+                isBossDefeated = true;
+                addBattleMessage('Kasaka has been defeated!');
+                bossContainer.style.pointerEvents = 'none';
+            }
+        }
+
+        function bossAttack() {
+            if (isBossDefeated || isPlayerDefeated) return;
+
+            const damage = Math.floor(Math.random() * 20) + 10;
+            playerHealth = Math.max(0, playerHealth - damage);
+            const healthPercentage = (playerHealth / 100) * 100;
+            playerHealthBar.style.width = `${healthPercentage}%`;
+            playerHealthText.textContent = playerHealth;
+
+            addBattleMessage(`Kasaka deals ${damage} damage to you!`);
+
+            if (playerHealth <= 0 && !isPlayerDefeated) {
+                isPlayerDefeated = true;
+                addBattleMessage('You have been defeated!');
+            }
+        }
+
+        bossContainer.addEventListener('click', (e) => {
+            if (isBossDefeated || isPlayerDefeated) return;
+
+            const rect = bossContainer.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            const damage = Math.floor(Math.random() * 50) + 20;
+            createDamageText(x, y, damage);
+            updateBossHealth(damage);
+            addBattleMessage(`You deal ${damage} damage to Kasaka!`);
+
+            // Boss counter-attack
+            setTimeout(bossAttack, 1000);
+        });
+    </script>
+</body>
+</html> 
