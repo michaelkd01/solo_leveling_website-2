@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boss Fights - Solo Leveling</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        :root {
+            --primary-color: #8B0000;  /* Deep red from Igris's armor */
+            --secondary-color: #A52A2A;  /* Lighter red for accents */
+            --background-color: #2a1b3d;  /* Deep purple background */
+            --text-color: #ffffff;
+            --card-bg: #2a2a2a;
+            --hover-color: #D22B2B;  /* Bright red for hover states */
+            --accent-color: #8B0000;  /* Deep red for borders and highlights */
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+
+        .header {
+            background-color: var(--background-color);
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-bar {
+            background-color: var(--background-color);
+            padding: 1rem 0;
+            margin-top: 1rem;
+        }
+
+        .nav-center {
+            display: flex;
+            justify-content: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .nav-center ul {
+            display: flex;
+            gap: 3rem;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .nav-center .nav-link {
+            font-size: 1.2rem;
+            font-weight: 500;
+            padding: 0.5rem 1.5rem;
+            border-radius: 4px;
+            transition: all 0.3s;
+            color: var(--text-color);
+            text-decoration: none;
+            border: 1px solid var(--accent-color);
+        }
+
+        .nav-center .nav-link:hover {
+            background-color: var(--hover-color);
+            transform: translateY(-2px);
+        }
+
+        .nav-center .nav-link.active {
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            box-shadow: 0 2px 4px rgba(139, 0, 0, 0.2);
+        }
+
+        .boss-fights-section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            color: var(--secondary-color);
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+        }
+
+        .boss-fights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .boss-fight-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            border: 1px solid var(--accent-color);
+        }
+
+        .boss-fight-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .boss-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .boss-info {
+            padding: 1.5rem;
+        }
+
+        .boss-title {
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+        }
+
+        .boss-details {
+            color: #cccccc;
+            margin-bottom: 1rem;
+        }
+
+        .boss-abilities {
+            margin-top: 1rem;
+        }
+
+        .boss-abilities h4 {
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .boss-abilities ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .boss-abilities li {
+            color: #cccccc;
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .boss-abilities li:before {
+            content: "•";
+            color: var(--secondary-color);
+            position: absolute;
+            left: 0;
+        }
+
+        .outcome {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--accent-color);
+        }
+
+        .outcome h4 {
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .outcome p {
+            color: #cccccc;
+        }
+
+        .logo-container {
+            width: 200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .logo-container img {
+            max-width: 100%;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-container img:hover {
+            transform: scale(1.05);
+        }
+
+        footer {
+            background-color: #000000;
+            color: #ffffff;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+        }
+
+        footer a {
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-container">
+                    <a href="index.html" class="logo">
+                        <img src="images/logo.png" alt="SoloRanking">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="nav-bar">
+        <div class="nav-center">
+            <ul>
+                <li><a href="rankings.html" class="nav-link">Rankings</a></li>
+                <li><a href="quiz.html" class="nav-link">Character Quiz</a></li>
+                <li><a href="boss-fights.html" class="nav-link active">Boss Fights</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="boss-fights-section">
+        <h2 class="section-title">Epic Boss Fights</h2>
+        <div class="boss-fights-grid">
+            <div class="boss-fight-card">
+                <img src="images/boss-fights/igris.jpg" alt="Igris Boss Fight" class="boss-image">
+                <div class="boss-info">
+                    <h3 class="boss-title">Igris</h3>
+                    <p class="boss-details">First Major Boss Fight</p>
+                    <div class="boss-abilities">
+                        <h4>Abilities</h4>
+                        <ul>
+                            <li>Master swordsmanship</li>
+                            <li>Enhanced strength and speed</li>
+                            <li>Combat experience</li>
+                            <li>Loyal to the Shadow Monarch</li>
+                        </ul>
+                    </div>
+                    <div class="outcome">
+                        <h4>Outcome</h4>
+                        <p>Jin-Woo defeats Igris and gains him as his first shadow soldier, marking a significant turning point in his power growth.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="boss-fight-card">
+                <img src="images/boss-fights/beru.jpg" alt="Beru Boss Fight" class="boss-image">
+                <div class="boss-info">
+                    <h3 class="boss-title">Beru</h3>
+                    <p class="boss-details">Ant King Boss Fight</p>
+                    <div class="boss-abilities">
+                        <h4>Abilities</h4>
+                        <ul>
+                            <li>Immense physical strength</li>
+                            <li>High-speed movement</li>
+                            <li>Regeneration abilities</li>
+                            <li>Command over ant army</li>
+                        </ul>
+                    </div>
+                    <div class="outcome">
+                        <h4>Outcome</h4>
+                        <p>Jin-Woo defeats Beru and gains him as a powerful shadow soldier, significantly increasing his military strength.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="boss-fight-card">
+                <img src="images/boss-fights/jeju-island.jpg" alt="Jeju Island Boss Fight" class="boss-image">
+                <div class="boss-info">
+                    <h3 class="boss-title">Jeju Island Raid</h3>
+                    <p class="boss-details">Large-Scale Boss Fight</p>
+                    <div class="boss-abilities">
+                        <h4>Challenges</h4>
+                        <ul>
+                            <li>Multiple S-Rank monsters</li>
+                            <li>Strategic coordination</li>
+                            <li>Massive ant army</li>
+                            <li>Environmental hazards</li>
+                        </ul>
+                    </div>
+                    <div class="outcome">
+                        <h4>Outcome</h4>
+                        <p>Jin-Woo successfully clears the Jeju Island gate, establishing himself as one of the world's strongest hunters.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Solo Leveling Fan Site | Images from <a href="https://solo-leveling.fandom.com/" target="_blank">Solo Leveling Wiki</a></p>
+        </div>
+    </footer>
+</body>
+</html> 
