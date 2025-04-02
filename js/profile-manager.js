@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Navigation handling
     const navLinks = document.querySelectorAll('.nav-link');
     const sections = document.querySelectorAll('section');
+    const mainContent = document.querySelector('.main-content');
 
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
@@ -12,12 +13,23 @@ document.addEventListener('DOMContentLoaded', function() {
             navLinks.forEach(l => l.classList.remove('active'));
             link.classList.add('active');
             
+            // Hide all sections
             sections.forEach(section => {
                 section.classList.remove('active');
-                if (section.id === `${targetSection}-section`) {
-                    section.classList.add('active');
-                }
             });
+
+            // Show only the target section
+            const targetSectionElement = document.getElementById(`${targetSection}-section`);
+            if (targetSectionElement) {
+                targetSectionElement.classList.add('active');
+            }
+
+            // Adjust main content padding based on section
+            if (targetSection === 'profiles') {
+                mainContent.style.paddingTop = '2rem';
+            } else {
+                mainContent.style.paddingTop = '';
+            }
         });
     });
 
@@ -29,6 +41,16 @@ document.addEventListener('DOMContentLoaded', function() {
     // Function to display profiles
     function displayProfiles() {
         profileGrid.innerHTML = '';
+        if (profiles.length === 0) {
+            profileGrid.innerHTML = `
+                <div class="profile-card" style="grid-column: 1 / -1; text-align: center; padding: 2rem;">
+                    <h3>No Profiles Yet</h3>
+                    <p>Be the first to create a profile!</p>
+                    <button class="add-profile-btn" style="margin-top: 1rem;">Add New Profile</button>
+                </div>
+            `;
+            return;
+        }
         profiles.forEach(profile => {
             const profileCard = createProfileCard(profile);
             profileGrid.appendChild(profileCard);
